@@ -9,10 +9,11 @@
   </head>
   <body>
     <div class="container">
+
       <!-- navbar -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark my-lg-5">
         <div class="container-fluid">
-          <img src="logo.png" alt="Girl in a jacket" width="80px" height=auto>
+          <img src="logo.png" alt="logo" width="80px" height=auto>
           <a class="navbar-brand" href="#">UAM FPL Simulator</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -20,13 +21,13 @@
           <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="/index.html">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">정보 등록/관리</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="/index.html" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   비행계획서
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -42,24 +43,651 @@
       </nav>
 
       <!-- content header -->
-      <div class="row">
-        <div class="col-9">
-          <h2>Home 화면</h2>
+      <div class="row" id="header_col">
+        <div class="col-10">
+          <h1>FPL Create</h1>
+        </div>
+        <div class="col-2">
+          <div class="btn-group" role="group" aria-label="fplNewLoadSave">
+            <button type="button" class="btn btn-secondary btn-sm">NEW</button>
+            <button type="button" class="btn btn-secondary btn-sm">LOAD</button>
+            <button type="button" class="btn btn-dark btn-sm">SAVE</button>
+          </div>
         </div>
         <hr />
       </div>
+
       <!-- content main -->
       <div class="row">
-     
+        <form>
+
+          <!-- Flight Information -->
+          <div class="row my-3">
+            <h4>Basic Information</h4>
+            <div class="form-group col-md-2">
+              <label for="inputDeparturePort">Departure Vertiport</label>
+              <input type="text" class="form-control" id="inputDeparturePort" placeholder="GHVP">
+              <label for="inputDestinationPort">Destination Vertiport</label>
+              <input type="text" class="form-control" id="inputDestinationPort" placeholder="GHVP">
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputDepartureDate">Departure Date</label>
+              <input type="date" class="form-control" id="inputDepartureDate">
+              <label for="inputDepartureTime">Departure Time</label>
+              <input type="time" class="form-control" id="inputDepartureTime">
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputAlternatePort">Alternate Vertiport</label>
+              <input type="text" class="form-control" id="inputAlternatePort" placeholder="GHVP">
+              <label for="input2ndAlternatePort">2nd Alternate Vertiport</label>
+              <input type="text" class="form-control" id="input2ndAlternatePort" placeholder="GHVP">
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputPIC">PIC</label>
+              <select class="form-select" id="inputPIC">
+                <option selected>Pilot_1</option>
+                <option value="1">Pilot_2</option>
+                <option value="1">Pilot_3</option>
+              </select>
+              <label for="inputPersonNum">Person on board</label>
+              <input type="text" class="form-control" id="inputPersonNum" placeholder="4">
+            </div>
+          </div>
+
+          <!-- FPL General -->
+          <div class="row my-3">
+            <hr />
+            <h4>Flight Rules</h4>
+            <div class="form-group col-md-2">
+              <label for="inputFlightRule">Flight Rule</label>
+              <select class="form-select" id="inputFlightRule">
+                <option selected>VFR</option>
+                <option value="1">IFR</option>
+                <option value="1">Y(IFR->VFR)</option>
+                <option value="1">Z(VFR->IFR)</option>
+              </select>
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputFlightType">Flight Type</label>
+              <select class="form-select" id="inputFlightType">
+                <option selected>S(scheduled)</option>
+                <option value="1">N(Non-scheduled)</option>
+                <option value="1">G(General)</option>
+                <option value="1">M(Millitary)</option>
+                <option value="1">X(etc.)</option>
+              </select>
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputFlightNum">Number</label>
+              <input type="text" class="form-control" id="inputFlightNum" placeholder="1">
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputFlightControlType">Control Type</label>
+              <select class="form-select" id="inputFlightControlType">
+                <option selected>Pilot</option>
+                <option value="1">Remote Control</option>
+                <option value="1">Autonomous Control</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Aircraft Information -->
+          <div class="row my-3">
+            <hr />
+            <h4>Aircraft Information</h4>
+            <div class="form-group col-md-2">
+              <label for="inputAircraftID">ID(Tail No.)</label>
+              <select class="form-select" id="inputAircraftID">
+                <option selected>HL1111</option>
+                <option value="1">HL2222</option>
+                <option value="1">HL3333</option>
+              </select>
+              <label for="inputCallsign">Call Sign(Optional)</label>
+              <input type="text" class="form-control" id="inputCallsign" placeholder="N123">
+              <label for="inputAircraftType">Type</label>
+              <input type="text" class="form-control" id="inputAircraftType" placeholder="JOBY S4" disabled>
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputAircraftWeightCategory">Weight Category</label>
+              <input type="text" class="form-control" id="inputAircraftWeightCategory" placeholder="Light" disabled>
+              <label for="inputAircraftComm">Communication Equipment</label>
+              <input type="text" class="form-control" id="inputAircraftComm" placeholder="C2" disabled>
+              <label for="inputAircraftNavi">Navigation Equipment</label>
+              <input type="text" class="form-control" id="inputAircraftNavi" placeholder="GNSS" disabled>
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputAircraftSurv">Surveillance Equipment</label>
+              <input type="text" class="form-control" id="inputAircraftSurv" placeholder="Radar" disabled>
+              <label for="inputAircraftEmerComm">Emergency Communication</label>
+              <!--<input type="text" class="form-control" id="inputAircraftEmerComm" placeholder="VHF" disabled>-->
+                <div class="form-check form-check-inline small">
+                  <input class="form-check-input" type="radio" name="inputAircraftEmerComm" id="inlineRadio1" value="option1" disabled>
+                  <label class="form-check-label" for="inlineRadio1">UHF</label>
+                </div>
+                <div class="form-check form-check-inline small">
+                  <input class="form-check-input" type="radio" name="inputAircraftEmerComm" id="inlineRadio2" value="option2" checked disabled>
+                  <label class="form-check-label" for="inlineRadio1">VHF</label>
+                </div>
+                <div class="form-check form-check-inline small">
+                  <input class="form-check-input" type="radio" name="inputAircraftEmerComm" id="inlineRadio3" value="option3" disabled>
+                  <label class="form-check-label" for="inlineRadio1">ELT</label>
+                </div>
+              <label for="inputAircraftSurvival">Survival Equipment</label>
+                <div class="form-check form-check-inline small">
+                  <input class="form-check-input" type="radio" name="inputAircraftSurvival" id="inlineRadio2" value="option1" checked disabled>
+                  <label class="form-check-label" for="inlineRadio2">Polar</label>
+                </div>
+                <div class="form-check form-check-inline small">
+                  <input class="form-check-input" type="radio" name="inputAircraftSurvival" id="inlineRadio2" value="option2" checked disabled>
+                  <label class="form-check-label" for="inlineRadio2">Desert</label>
+                </div>
+                <div class="form-check form-check-inline small">
+                  <input class="form-check-input" type="radio" name="inputAircraftSurvivalinputAircraftSurvival" id="inlineRadio3" value="option3" disabled>
+                  <label class="form-check-label" for="inlineRadio3">Maritime</label>
+                </div>
+                <div class="form-check form-check-inline small">
+                  <input class="form-check-input" type="radio" name="inputAircraftSurvivalinputAircraftSurvival" id="inlineRadio3" value="option3" disabled>
+                  <label class="form-check-label" for="inlineRadio3">Jungle</label>
+                </div>
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputAircraftThrustType">Thrust Type(opt.)</label>
+              <input type="text" class="form-control" id="inputAircraftThrustType" placeholder="Vectored" disabled>
+              <label for="inputAircraftThrustNum">Thrust Num.(opt.)</label>
+              <input type="text" class="form-control" id="inputAircraftThrustNum" placeholder="6" disabled>
+              <label for="inputAircraftFuelType">Fuel Type(opt.)</label>
+              <input type="text" class="form-control" id="inputAircraftFuelType" placeholder="Battery Only" disabled>
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputAircraftMaxTime">Max. Flight Time(opt.)</label>
+              <input type="text" class="form-control" id="inputAircraftMaxTime" placeholder="77min" disabled>
+              <label for="inputAircraftMaxDistance">Max. Flight Distance(opt.)</label>
+              <input type="text" class="form-control" id="inputAircraftMaxDistance" placeholder="240km" disabled>
+              <label for="inputAircraftMaxSpeed">Max. Flight Speed(opt.)</label>
+              <input type="text" class="form-control" id="inputAircraftMaxSpeed" placeholder="320km/h" disabled>
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputAircraftMTOW">MTOW(opt.)</label>
+              <input type="text" class="form-control" id="inputAircraftMTOW" placeholder="7000kg" disabled>
+              <label for="inputAircraftEmptyWeight">Empty Weight(opt.)</label>
+              <input type="text" class="form-control" id="inputAircraftEmptyWeight" placeholder="5000kg" disabled>
+              <label for="inputAircraftColor">Color and Marks</label>
+              <input type="text" class="form-control" id="inputAircraftNoise" placeholder="White" disabled>
+            </div>
+          </div>
+
+          <!-- Route -->
+          <div class="row my-3">
+            <hr />
+            <h4>Route</h4>
+            <div class="form-group col-md-6">
+              <label for="inputPIC">Select Flight Path</label>
+                <select class="form-select" id="inputPIC">
+                  <option selected>Goheung - WP1 - WP2 - WP3 - Goheung</option>
+                  <option value="1">Goheung - WP1 - WP4 - WP5  - Goheung</option>
+                  <option value="1">Goheung - WP3 - WP5 - WP6 - WP7 - Goheung</option>
+                </select>
+            </div>
+
+          </div>
+
+          <!-- Weather -->
+          <div class="row my-3">
+            <hr />
+            <h4>Weather</h4>
+            <div class="form-group col-md-3">
+              <label for="weatherDEPVertiport">Departure Vertiport Weather</label>
+              <input type="text" class="form-control" id="inputDEPVertiport " placeholder="GHVP(Goheung)" disabled>
+              <input type="text" class="form-control" id="weatherDEPVertiport" placeholder="25.7 / 17kt / EE / 10km / 2.9mm" disabled>
+              <label for="inputArriveTime">Weather Link</label>
+            </div>
+            
+            <div class="form-group col-md-3">
+                <label for="weatherDEPVertiport">Destination Vertiport Weather</label>
+                <input type="text" class="form-control" id="inputDESVertiport " placeholder="GHVP(Goheung)" disabled>
+                <input type="text" class="form-control" id="weatherDESVertiport" placeholder="25.7 / 17kt / EE / 10km / 2.9mm" disabled>
+            </div>
+
+            <div class="form-group col-md-3">
+              <label for="weatherDEPVertiport">Weather Link</label>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Site
+                </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a href="http://amo.kma.go.kr/" target="_blank" title="새창열림">항공기상청</a></li>
+                    <li><a href="http://www.weather.go.kr" target="_blank" title="새창열림">기상청</a></li>
+                    <li><a href="http://web.kma.go.kr/aboutkma/intro/metropolitan/index.jsp" target="_blank" title="새창열림">수도권기상청</a></li>
+                    <li><a href="http://web.kma.go.kr/aboutkma/intro/busan/index.jsp" target="_blank" title="새창열림">부산지방기상청</a></li>
+                    <li><a href="http://web.kma.go.kr/aboutkma/intro/gwangju/index.jsp" target="_blank" title="새창열림">광주지방기상청</a></li>
+                    <li><a href="http://web.kma.go.kr/aboutkma/intro/gangwon/index.jsp" target="_blank" title="새창열림">강원지방기상청</a></li>
+                    <li><a href="http://web.kma.go.kr/aboutkma/intro/daejeon/index.jsp" target="_blank" title="새창열림">대전지방기상청</a></li>
+                    <li><a href="http://web.kma.go.kr/aboutkma/intro/daegu/index.jsp" target="_blank" title="새창열림">대구지방기상청</a></li>
+                    <li><a href="http://web.kma.go.kr/aboutkma/intro/jeju/index.jsp" target="_blank" title="새창열림">제주지방기상청</a></li>
+                    <li><a href="http://web.kma.go.kr/aboutkma/intro/cheongju/index.jsp" target="_blank" title="새창열림">청주기상지청</a></li>
+                    <li><a href="http://web.kma.go.kr/aboutkma/intro/jeonju/index.jsp" target="_blank" title="새창열림">전주기상지청</a></li>
+                    <li><a href="http://nmsc.kma.go.kr" target="_blank" title="새창열림">국가기상위성센터</a></li>
+                    <li><a href="http://www.nimr.go.kr/" target="_blank" title="새창열림">국립기상과학원</a></li>
+                    <li><a href="http://radar.kma.go.kr" target="_blank" title="새창열림">기상레이더센터</a></li>
+                  </ul>
+                </div>
+            </div>
+
+            <div class="form-group col-md-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Weather Check complete
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- NOTAM -->
+          <div class="row my-3">
+            <hr />
+            <h4>NOTAM</h4>
+            
+            <div class="form-group col-md-3">
+              <label for="vertiportNotamList">Vertiport NOTAM</label>
+              <input type="text" class="form-control" id="inputDEPVertiport " placeholder="GHVP(Goheung)" disabled>
+              <input type="text" class="form-control" id="vertiportNotamList" placeholder="None" disabled>
+            </div>
+
+            <div class="form-group col-md-3">
+              <label for="vertiportNotamList">Route NOTAM</label>
+              <input type="text" class="form-control" id="vertiportNotamList" placeholder="None" disabled>
+            </div>
+            <div class="form-group col-md-3">
+              <label>NOTAM Link</label>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="notamLink" data-bs-toggle="dropdown" aria-expanded="false">
+                  Site
+                </button>
+                  <ul class="dropdown-menu" aria-labelledby="notamLink">
+                    <li><a href="http://aim.koca.go.kr/xNotam/" target="_blank" title="새창열림">xNOTAM</a></li>
+                  </ul>
+                </div>
+            </div>
+
+            <div class="form-group col-md-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  NOTAM Check complete
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Load -->
+          <div class="row my-3">
+            <hr />
+            <h4>Payload</h4>
+            <div class="form-group col-md-4">
+              <table id="tablePeopleLoad">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>PEOPLE</th>
+                    <th>WEIGHT</th>
+                    <th>SUBTOTAL</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>PILOT</td>
+                    <td>
+                      <input type="text" class="form-control" id="inputPilotNum" placeholder="1">
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="inputPilotWeight" placeholder="80kg">
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="inputPilotSubTotal" placeholder="80kg" disabled>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Adult(Male)</td>
+                    <td>
+                      <input type="text" class="form-control" id="inputPilotNum" placeholder="1">
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="inputPilotWeight" placeholder="80kg">
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="inputPilotSubTotal" placeholder="80kg" disabled>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Adult(Female)</td>
+                    <td>
+                      <input type="text" class="form-control" id="inputPilotNum" placeholder="2">
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="inputPilotWeight" placeholder="60kg">
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="inputPilotSubTotal" placeholder="120kg" disabled>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Children</td>
+                    <td>
+                      <input type="text" class="form-control" id="inputPilotNum" placeholder="1">
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="inputPilotWeight" placeholder="30kg">
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="inputPilotSubTotal" placeholder="30kg" disabled>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Children</td>
+                    <td>
+                      <input type="text" class="form-control" id="inputPilotNum" placeholder="1">
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="inputPilotWeight" placeholder="30kg">
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="inputPilotSubTotal" placeholder="30kg" disabled>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Bags</td>
+                    <td>
+                      <input type="text" class="form-control" id="inputPilotNum" placeholder="1">
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="inputPilotWeight" placeholder="30kg">
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" id="inputPilotSubTotal" placeholder="30kg" disabled>
+                    </td>
+                  </tr>
+
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="3">Total</td>
+                    <td>310kg</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+
+          <!-- NavLog -->
+          <div class="row my-3">
+            <hr />
+            <div class="col-10">
+              <h4>Navigation Log</h4>
+            </div>
+            <div class="form-group col-2">
+              <div class="btn-group" role="group" aria-label="navLogEdit">
+                <button type="button" class="btn btn-secondary btn-sm">EDIT</button>
+                <button type="button" class="btn btn-secondary btn-sm">CONFIRM</button>
+              </div>
+            </div>
+            <table id="tableFlightLog">
+              <thead>
+                <tr>
+                  <th rowspan="5" colspan="1">Check Point</th>
+                  <th rowspan="5" colspan="1">Alt(ft)</th>
+                  <th rowspan="3" colspan="1">Temp</th>
+                  <th rowspan="1" colspan="3">Course</th>
+                  <th rowspan="1" colspan="1" >WIND</th>
+                  <th rowspan="1" colspan="4">HEADING</th>
+                  <th rowspan="1" colspan="5">SPEED/DISTANCE/TIME/BAT</th>
+                </tr>
+                <tr>
+                  <th rowspan="4" colspan="1">TC</th>
+                  <th rowspan="4" colspan="1">VAR</th>
+                  <th rowspan="4" colspan="1">MC</th>
+                  <th rowspan="2" colspan="1">DIR</th>
+                  <th rowspan="2" colspan="1">TC</th>
+                  <th rowspan="2" colspan="1">TH</th>
+                  <th rowspan="2" colspan="1">MH</th>
+                  <th rowspan="4" colspan="1">CH</th>
+                  <th rowspan="2" colspan="1">GS(kts)</th>
+                  <th rowspan="2" colspan="1">DIST(NM)</th>
+                  <th rowspan="1" colspan="2">TIME OFF</th>
+                  <th rowspan="1" colspan="2">BAT</th>
+                </tr>
+                <tr>
+                  <th rowspan="1" colspan="2">10:00</th>
+                  <th rowspan="1" colspan="1">150</th>
+                </tr>
+                <tr>
+                  <th rowspan="2" colspan="1">TAS</th>
+                  <th rowspan="2" colspan="1">SPD(kts)</th>
+                  <th rowspan="2" colspan="1">WCA</th>
+                  <th rowspan="2" colspan="1">VAR</th>
+                  <th rowspan="2" colspan="1">DEV</th>
+                  <th rowspan="1" colspan="1">EST</th>
+                  <th rowspan="1" colspan="1">LEG</th>
+                  <th rowspan="1" colspan="1">ETE</th>
+                  <th rowspan="1" colspan="1">ETA</th>
+                  <th rowspan="1" colspan="1">USED</th>
+                </tr>
+                <tr>
+                  <th rowspan="1" colspan="1">ACT</th>
+                  <th rowspan="1" colspan="1">REM</th>
+                  <th rowspan="1" colspan="1">ATE</th>
+                  <th rowspan="1" colspan="1">ATA</th>
+                  <th rowspan="1" colspan="1">REM</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Departure Vertiport-->
+                <tr>
+                  <td rowspan="2">Goheung</td>
+                  <td rowspan="2">2,000</td>
+                  <td rowspan="1">20</td>
+                  <td rowspan="2">202</td>
+                  <td rowspan="2">8 W</td>
+                  <td rowspan="2">210</td>
+                  <td rowspan="1">250</td>
+                  <td rowspan="1">202</td>
+                  <td rowspan="1">205</td>
+                  <td rowspan="1">213</td>
+                  <td rowspan="2">213</td>
+                  <td rowspan="1">139</td>
+                  <td rowspan="1">0.5</td>
+                  <td rowspan="1">0:00</td>
+                  <td rowspan="1">10:00</td>
+                  <td rowspan="1">0.4</td>
+                </tr>
+                <tr>
+                  <td rowspan="1">76</td>
+                  <td rowspan="1">9</td>
+                  <td rowspan="1">3</td>
+                  <td rowspan="1">8</td>
+                  <td rowspan="1"></td>
+                  <td rowspan="1"></td>
+                  <td rowspan="1">16.7</td>
+                  <td rowspan="1"></td>
+                  <td rowspan="1"></td>
+                  <td rowspan="1">149.6</td>
+                </tr>
+                <!-- 1st Waypoint-->
+                <tr>
+                  <td rowspan="2">WP 1</td>
+                  <td rowspan="2">2,000</td>
+                  <td rowspan="1">20</td>
+                  <td rowspan="2">202</td>
+                  <td rowspan="2">8 W</td>
+                  <td rowspan="2">210</td>
+                  <td rowspan="1">250</td>
+                  <td rowspan="1">202</td>
+                  <td rowspan="1">205</td>
+                  <td rowspan="1">213</td>
+                  <td rowspan="2">213</td>
+                  <td rowspan="1">139</td>
+                  <td rowspan="1">0.5</td>
+                  <td rowspan="1">0:00</td>
+                  <td rowspan="1">10:00</td>
+                  <td rowspan="1">0.4</td>
+                </tr>
+                <tr>
+                  <td rowspan="1">76</td>
+                  <td rowspan="1">9</td>
+                  <td rowspan="1">3</td>
+                  <td rowspan="1">8</td>
+                  <td rowspan="1"></td>
+                  <td rowspan="1"></td>
+                  <td rowspan="1">16.7</td>
+                  <td rowspan="1"></td>
+                  <td rowspan="1"></td>
+                  <td rowspan="1">149.6</td>
+                </tr>
+                <!-- 2nd Waypoint-->
+                <tr>
+                  <td rowspan="2">WP 2</td>
+                  <td rowspan="2">2,000</td>
+                  <td rowspan="1">20</td>
+                  <td rowspan="2">202</td>
+                  <td rowspan="2">8 W</td>
+                  <td rowspan="2">210</td>
+                  <td rowspan="1">250</td>
+                  <td rowspan="1">202</td>
+                  <td rowspan="1">205</td>
+                  <td rowspan="1">213</td>
+                  <td rowspan="2">213</td>
+                  <td rowspan="1">139</td>
+                  <td rowspan="1">0.5</td>
+                  <td rowspan="1">0:00</td>
+                  <td rowspan="1">10:00</td>
+                  <td rowspan="1">0.4</td>
+                </tr>
+                <tr>
+                  <td rowspan="1">76</td>
+                  <td rowspan="1">9</td>
+                  <td rowspan="1">3</td>
+                  <td rowspan="1">8</td>
+                  <td rowspan="1"></td>
+                  <td rowspan="1"></td>
+                  <td rowspan="1">16.7</td>
+                  <td rowspan="1"></td>
+                  <td rowspan="1"></td>
+                  <td rowspan="1">149.6</td>
+                </tr>
+                <!-- 3rd Waypoint-->
+                <tr>
+                  <td rowspan="2">WP 3</td>
+                  <td rowspan="2">2,000</td>
+                  <td rowspan="1">20</td>
+                  <td rowspan="2">202</td>
+                  <td rowspan="2">8 W</td>
+                  <td rowspan="2">210</td>
+                  <td rowspan="1">250</td>
+                  <td rowspan="1">202</td>
+                  <td rowspan="1">205</td>
+                  <td rowspan="1">213</td>
+                  <td rowspan="2">213</td>
+                  <td rowspan="1">139</td>
+                  <td rowspan="1">0.5</td>
+                  <td rowspan="1">0:00</td>
+                  <td rowspan="1">10:00</td>
+                  <td rowspan="1">0.4</td>
+                </tr>
+                <tr>
+                  <td rowspan="1">76</td>
+                  <td rowspan="1">9</td>
+                  <td rowspan="1">3</td>
+                  <td rowspan="1">8</td>
+                  <td rowspan="1"></td>
+                  <td rowspan="1"></td>
+                  <td rowspan="1">16.7</td>
+                  <td rowspan="1"></td>
+                  <td rowspan="1"></td>
+                  <td rowspan="1">149.6</td>
+                </tr>
+                <!-- Destination Vertiport-->
+                <tr>
+                  <td rowspan="2">Goheung</td>
+                  <td rowspan="2">2,000</td>
+                  <td rowspan="1">20</td>
+                  <td rowspan="2">202</td>
+                  <td rowspan="2">8 W</td>
+                  <td rowspan="2">210</td>
+                  <td rowspan="1">250</td>
+                  <td rowspan="1">202</td>
+                  <td rowspan="1">205</td>
+                  <td rowspan="1">213</td>
+                  <td rowspan="2">213</td>
+                  <td rowspan="1">139</td>
+                  <td rowspan="1">0.5</td>
+                  <td rowspan="1">0:00</td>
+                  <td rowspan="1">10:00</td>
+                  <td rowspan="1">0.4</td>
+                </tr>
+                <tr>
+                  <td rowspan="1">76</td>
+                  <td rowspan="1">9</td>
+                  <td rowspan="1">3</td>
+                  <td rowspan="1">8</td>
+                  <td rowspan="1"></td>
+                  <td rowspan="1"></td>
+                  <td rowspan="1">16.7</td>
+                  <td rowspan="1"></td>
+                  <td rowspan="1"></td>
+                  <td rowspan="1">149.6</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Nav Log Result -->
+          <div class="row my-3">
+            <hr />
+            <h4>Navigation Log Result</h4>
+            <div class="form-group col-md-2">
+              <label for="inputArriveTime">Arrive Time(ETA)</label>
+              <input type="text" class="form-control" id="inputArriveTime" placeholder="10:10" disabled>
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputTotalFlightTime">Total Flight Time(EET)</label>
+              <input type="text" class="form-control" id="inputTotalFlightTimev" placeholder="10min 30sec" disabled>
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputTotalFlightTime">Esitmated Battery Consumption</label>
+              <input type="text" class="form-control" id="inputTotalFlightTimev" placeholder="40Ah(78%)" disabled>
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputTotalFlightTime">Nessasary safe Battery Charge</label>
+              <input type="text" class="form-control" id="inputTotalFlightTimev" placeholder="90Ah(92%)" disabled>
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputTotalFlightTime">Emergency flight possible time</label>
+              <input type="text" class="form-control" id="inputTotalFlightTimev" placeholder="5min 30sec" disabled>
+            </div>
+          </div>
+
+          <!-- FPL File -->
+          <div class="row my-3">
+            <hr />
+            <h4>FPL File</h4>
+            <div class="btn-group" role="group" aria-label="fplValidateSend">
+              <button type="button" class="btn btn-secondary btn-sm">Brief</button>
+              <button type="button" class="btn btn-dark btn-sm">OFP</button>
+              <button type="button" class="btn btn-warning btn-sm">VALIDATE</button>
+              <button type="button" class="btn btn-success btn-sm">SEND</button>
+            </div>
+          </div>
+        </form>
       </div>
       
-
       <!-- footer -->
-      <div>
+      <div class="copyright">
         <hr />
-        <p> SK Telecom </p>
+        <p> Copyright by 2022 SK Telecom. ALL RIGHTS RESERVED. </p>
       </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
   </body>
 </html>
