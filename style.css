@@ -1,0 +1,64 @@
+#header_col {
+  border: none;
+  align-items: center; 
+}
+
+#tableFlightLog table, th, td{
+  border: 1px solid black;
+  border-collapse: collapse;
+  border-color: gray;
+  text-align: center;
+  vertical-align: middle;
+}
+.navbar-brand {
+  font-style: italic;
+  font-weight: bold;
+  font-size: 1.3em;
+  margin-left: 20px;
+}
+.form-group {
+  margin-bottom: 10px;
+}
+
+.form-check {
+  font-size: 0.5em;
+}
+.form-group label {
+  font-size: 15px;
+}
+
+.form-group input {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.form-group select {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+#tablePeopleLoad th {
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+#tablePeopleLoad td {
+  border: none;
+  border-bottom: 1px dashed gray;
+}
+
+#tablePeopleLoad td input{
+  border: none;
+  text-align: center;
+}
+
+.copylight p {
+  text-align: end;
+}
+
+.dropdown-menu a {
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+}
+
